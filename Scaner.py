@@ -10,7 +10,7 @@ class Data:
 
     def Parse(self, stream):
         _str = Data()
-        stream = stream.replace(" ", "", stream.__sizeof__())
+        stream = stream.replace(" ", "", len(stream))
         _str.user = stream.split(';', 3)[0]
         _str.theme = stream.split(';', 3)[1]
         _str.mainTxt = stream.split(';', 3)[2]
@@ -19,7 +19,10 @@ class Data:
     @staticmethod
     def ParseFullFile(_fileName):
         _list = []
-        f = open(_fileName)
+        try:
+            f = open(_fileName)
+        except Exception:  # Надо сделать менее общее исключение
+            print("Invalid filename or file is corrupted")
         text = f.readline()
         while text:
             _r = Data()
@@ -32,7 +35,12 @@ class Data:
 
 # Для проверки работоспособности
 _list = Data.ParseFullFile('123')
-print(_list[1].user)
-print(_list[1].mainTxt)
-print(_list[2].user)
-print(_list[2].mainTxt)
+i = 0
+while i < len(_list):
+    a = i + 1
+    print("Инфлоиация о пользователь №" + a.__str__() + "\n_____________________________")
+    print("User Name: " + _list[i].user)
+    print("Theme: " +_list[i].theme)
+    print("Text: " +_list[i].mainTxt)
+    print("_____________________________\n")
+    i += 1
