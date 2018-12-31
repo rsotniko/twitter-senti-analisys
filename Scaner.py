@@ -1,5 +1,5 @@
 """
-Файл 123 содержит данные для проверки парсера
+Файл 123 содержит данные для проверки парсера, самое простые исключения обработаны
 """
 
 
@@ -11,9 +11,18 @@ class Data:
     def Parse(self, stream):
         _str = Data()
         stream = stream.replace(" ", "", len(stream))
-        _str.user = stream.split(';', 3)[0]
-        _str.theme = stream.split(';', 3)[1]
-        _str.mainTxt = stream.split(';', 3)[2]
+        # Если хоть в одном поле нет информации о поле или неверный вормат данных запишем в строку, что данные для
+        # пользователя  данные некорректны, если хоть 1 строка некорректна пользователь получит оповещение об этом
+        try:
+            _str.user = stream.split(';', 3)[0]
+            _str.theme = stream.split(';', 3)[1]
+            _str.mainTxt = stream.split(';', 3)[2]
+        except Exception:
+            print("_____________________________\n\nATTENTION: File has ivalid strings\n_____________________________\n")
+            _str.user = "user ignored"
+            _str.theme = "user ignored"
+            _str.mainTxt = "user ignored"
+
         return _str
 
     @staticmethod
@@ -38,7 +47,7 @@ _list = Data.ParseFullFile('123')
 i = 0
 while i < len(_list):
     a = i + 1
-    print("Инфлоиация о пользователь №" + a.__str__() + "\n_____________________________")
+    print("Информация о пользователь №" + a.__str__() + "\n_____________________________")
     print("User Name: " + _list[i].user)
     print("Theme: " +_list[i].theme)
     print("Text: " +_list[i].mainTxt)
