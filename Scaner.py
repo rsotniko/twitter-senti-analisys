@@ -12,13 +12,12 @@ class Data:
         _str = Data()
         stream = stream.replace(" ", "", len(stream))
         # Если хоть в одном поле нет информации о поле или неверный вормат данных запишем в строку, что данные для
-        # пользователя  данные некорректны, если хоть 1 строка некорректна пользователь получит оповещение об этом
+        # пользователя  данные некорректны
         try:
             _str.user = stream.split(';', 3)[0]
             _str.theme = stream.split(';', 3)[1]
             _str.mainTxt = stream.split(';', 3)[2]
         except Exception:  # Надо сделать менее общее исключение
-            print("_____________________________\n\nATTENTION: File has ivalid strings\n_____________________________\n")
             _str.user = "user ignored"
             _str.theme = "user ignored"
             _str.mainTxt = "user ignored"
