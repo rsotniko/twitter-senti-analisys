@@ -17,7 +17,7 @@ class Data:
             _str.user = stream.split(';', 3)[0]
             _str.theme = stream.split(';', 3)[1]
             _str.mainTxt = stream.split(';', 3)[2]
-        except Exception:
+        except Exception:  # Надо сделать менее общее исключение
             print("_____________________________\n\nATTENTION: File has ivalid strings\n_____________________________\n")
             _str.user = "user ignored"
             _str.theme = "user ignored"
