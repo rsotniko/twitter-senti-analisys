@@ -1,7 +1,6 @@
-"""
-Файл 123 содержит данные для проверки парсера, самое простые исключения обработаны
-"""
-
+'''
+File 123 include test strings for parsing
+'''
 
 class Data:
     user = " "
@@ -11,13 +10,11 @@ class Data:
     def Parse(self, stream):
         _str = Data()
         stream = stream.replace(" ", "", len(stream))
-        # Если хоть в одном поле нет информации о поле или неверный вормат данных запишем в строку, что данные для
-        # пользователя  данные некорректны
         try:
             _str.user = stream.split(';', 3)[0]
             _str.theme = stream.split(';', 3)[1]
             _str.mainTxt = stream.split(';', 3)[2]
-        except Exception:  # Надо сделать менее общее исключение
+        except Exception:
             _str.user = "user ignored"
             _str.theme = "user ignored"
             _str.mainTxt = "user ignored"
@@ -29,7 +26,7 @@ class Data:
         _list = []
         try:
             f = open(_fileName)
-        except Exception:  # Надо сделать менее общее исключение
+        except Exception:
             print("Invalid filename or file is corrupted")
         text = f.readline()
         while text:
@@ -41,13 +38,13 @@ class Data:
         return _list
 
 
-# Для проверки работоспособности
+# This code just represent the work of class above
 _list = Data.ParseFullFile('123')
 i = 0
 while i < len(_list):
     a = i + 1
-    print("Информация о пользователь №" + a.__str__() + "\n_____________________________")
-    print("User Name: " + _list[i].user)
+    print("User number " + a.__str__() + "\n_____________________________\n")
+    print("User name: " + _list[i].user)
     print("Theme: " +_list[i].theme)
     print("Text: " +_list[i].mainTxt)
     print("_____________________________\n")
