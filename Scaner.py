@@ -1,26 +1,35 @@
 '''
 File 123 include test strings for parsing
+Before running install pymorphy2 in console using pip
+Valid string format: UserName;theme;sampleText;
 '''
+
+import re
+import pymorphy2
+
+morph = pymorphy2.MorphAnalyzer()
+
 
 class Data:
     user = " "
     theme = " "
-    mainTxt = " "
+    mainTxt = []  # contains list of words, for analisys
 
+    # Parse 1 element
     def Parse(self, stream):
         _str = Data()
-        stream = stream.replace(" ", "", len(stream))
         try:
             _str.user = stream.split(';', 3)[0]
             _str.theme = stream.split(';', 3)[1]
-            _str.mainTxt = stream.split(';', 3)[2]
+            _str.mainTxt = Data.review_to_wordlist(stream.split(';', 3)[2])
         except Exception:
-            _str.user = "user ignored"
-            _str.theme = "user ignored"
-            _str.mainTxt = "user ignored"
+            _str.user = "Invalid data"
+            _str.theme = "Invalid data"
+            _str.mainTxt = "Invalid data"
 
         return _str
 
+    # Parse all elements using method Parse
     @staticmethod
     def ParseFullFile(_fileName):
         _list = []
@@ -37,6 +46,35 @@ class Data:
         f.close()
         return _list
 
+    # Return a list of words, in correct form
+    @staticmethod
+    def review_to_wordlist(review):
+        # Delete all simbols, exept uppercase and lowercase letters
+        review_text = re.sub("[^a-zA-Z]", " ", review)
+        # Converting uppercase to lowercase letters
+        words = review_text.lower().split()
+        # Converting to normal
+        words = [morph.parse(w)[0].normal_form for w in words]
+        return (words)
+
+
+'''
+ATTENTION CODE BELOW IS FOR DEMONSTRATION ONLY,
+SHOULD BE DELETED AFTER
+'''
+
+
+class List:
+    @staticmethod
+    def list_print(_list):
+        j = 0;
+        if _list == "Invalid data":
+            print ("Invalid data")
+        else:
+            for i in _list:
+                print("Element number " + j.__str__() + " " + i.__str__() + "\n")
+                j += 1;
+
 
 # This code just represent the work of class above
 _list = Data.ParseFullFile('123')
@@ -45,7 +83,7 @@ while i < len(_list):
     a = i + 1
     print("User number " + a.__str__() + "\n_____________________________\n")
     print("User name: " + _list[i].user)
-    print("Theme: " +_list[i].theme)
-    print("Text: " +_list[i].mainTxt)
+    print("Theme: " + _list[i].theme)
+    List.list_print(_list[i].mainTxt)
     print("_____________________________\n")
     i += 1

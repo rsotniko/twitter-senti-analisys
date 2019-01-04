@@ -1,7 +1,6 @@
-User_1; #theme1; sampleText_1;
-User_2; #theme1; sampleText_2;
-User_3; #theme1; sampleText_3;
-User_4;          #theme1;         sampleText_1;
-sampleText; notAll;
-sampleText; notAll
+User_1;#theme1;sampleText_1;
+User_2;#theme1;sampleText_2;
+User_2;#theme1;sampleText_3 mMm Sss UuU WWW;
+sampleText;notAll;
+sampleText;notAll
 qwerty
