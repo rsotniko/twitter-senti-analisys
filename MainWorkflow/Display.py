@@ -73,6 +73,7 @@ def save():
     handle = open("output.txt", "w")
     handle.write("This is a test!")
     handle.close()
+    messagebox.showinfo("INFO", "Результат сохранен в output.txt")
 
 
 root = Tk()
