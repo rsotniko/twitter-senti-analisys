@@ -69,10 +69,16 @@ def display():
     messagebox.showinfo("Result", "Ваш хештег: " + hashtag_entry.get() + "\nКолличество сообщений: " + num_entry.get())
 
 
+def save():
+    handle = open("output.txt", "w")
+    handle.write("This is a test!")
+    handle.close()
+
+
 root = Tk()
 root.title("RNN")
-w = 350
-h = 150
+w = 400
+h = 130
 sw = root.winfo_screenwidth()
 sh = root.winfo_screenheight()
 x = (sw - w) / 2
@@ -96,10 +102,12 @@ num_entry.grid(row=1, column=1, padx=5, pady=5)
 hashtag_entry.insert(0, "RNN")
 num_entry.insert(0, "10000")
 
+save_button = Button(text="Save", command=save)
 run_button = Button(text="Run", command=display)
 clear_button = Button(text="Clear", command=clear)
 
 run_button.grid(row=2, column=0, padx=5, pady=5, sticky="e")
 clear_button.grid(row=2, column=1, padx=5, pady=5, sticky="e")
+save_button.grid(row=2, column=2, padx=5, pady=5, sticky="e")
 
 root.mainloop()
