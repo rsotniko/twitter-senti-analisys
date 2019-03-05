@@ -36,9 +36,9 @@ def retTrue():
 
 def GetMark(_ct, _cf):
     if _ct < _cf:
-        return "\nОтрицательных коментариев больше чем положительных "
+        return "\nОтрицательных коментариев больше "
     if _cf < _ct:
-        return "\nОтрицательных коментариев меньше чем положительных "
+        return "\nОтрицательных коментариев меньше "
     if _cf == _ct:
         return "\nОтрицательных и положительных коментариев поровну "
 
@@ -59,7 +59,7 @@ def display():
     _cf = retFalse()
     handle = open("result.txt", "r")
     _maintxt = handle.read().replace(";", " ")
-    _res = _maintxt + "\n\nКол-во положительных отзывов = " + _ct.__str__() + "\nКол-во отрицательных отзывов = " + _cf.__str__()
+    _res = _maintxt + "\n\nКол-во положительных отзывов = " + _ct.__str__() + "\nКол-во отрицательных отзывов = " + _cf.__str__() + GetMark(_ct,_cf)
     txt = scrolledtext.ScrolledText(window, width=40, height=35)
     txt.grid(column=0, row=0)
     txt.insert(INSERT, _res)
