@@ -43,7 +43,6 @@ def GetMark(_ct, _cf):
         return "\nОтрицательных и положительных коментариев поровну "
 
 
-# Для теста
 def display():
     window = Tk()
     window.title("Result")
@@ -59,7 +58,7 @@ def display():
     _cf = retFalse()
     handle = open("result.txt", "r")
     _maintxt = handle.read().replace(";", " ")
-    _res = _maintxt + "\n\nКол-во положительных отзывов = " + _ct.__str__() + "\nКол-во отрицательных отзывов = " + _cf.__str__() + GetMark(_ct,_cf)
+    _res = _maintxt + "\n\nКол-во положительных отзывов = " + _ct.__str__() + "\nКол-во отрицательных отзывов = " + _cf.__str__() + GetMark(_ct, _cf)
     txt = scrolledtext.ScrolledText(window, width=40, height=35)
     txt.grid(column=0, row=0)
     txt.insert(INSERT, _res)
@@ -68,7 +67,11 @@ def display():
 
 def save():
     handle = open("output.txt", "w")
-    handle.write("This is a test!")
+    res = open("result.txt", "r")
+    _res = res.read()
+    _ct = retTrue()
+    _cf = retFalse()
+    handle.write(_res + "\n\nКол-во положительных отзывов = " + _ct.__str__() + "\nКол-во отрицательных отзывов = " + _cf.__str__() + GetMark(_ct, _cf) )
     handle.close()
     messagebox.showinfo("INFO", "Результат сохранен в output.txt")
 
