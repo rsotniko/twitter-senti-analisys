@@ -1,4 +1,4 @@
-import Analyzer
+import Scaner
 
 
 class Saver(object):
@@ -7,4 +7,5 @@ class Saver(object):
         self.data = analis_res
 
     def safe(self):
-        print self.data
+        print(self.data)
+

@@ -1,62 +1,6 @@
-# import tkinter as tk
-#
-#
-# class Display(tk.Frame):
-#     def __init__(self, root):
-#         super().__init__(root)
-#         self.add_img = tk.PhotoImage(
-#             file='/Users/dimadolgosheev/PycharmProjects/twitter-senti-analisys/play.gif')  # Указать свой путь к файлу
-#         self.init_main()
-#
-#     def init_main(self):
-#         tool_bar = tk.Frame(bd=2)
-#         tool_bar.pack(side=tk.TOP, fill=tk.X)
-#         btn = tk.Button(tool_bar, text="Analyze", command=self.click_button, bg='#d7d8e0', compound=tk.TOP, bd=0,
-#                         image=self.add_img)
-#         btn.pack(side=tk.LEFT)
-#
-#     def show_message():
-#         tk.messagebox.showinfo("GUI Python", tk.message.get())
-#
-#     def click_button(self):
-#         Child()
-#
-#
-# class Child(tk.Toplevel):
-#     def __init__(self):
-#         super().__init__(root)
-#         self.init_child()
-#
-#     def init_child(self):
-#         self.title("Result")  # Кнопка для запуска и вывода результата
-#         w = 700
-#         h = 450
-#         sw = root.winfo_screenwidth()
-#         sh = root.winfo_screenheight()
-#         x = (sw - w) / 2
-#         y = (sh - h) / 2
-#         self.geometry('%dx%d+%d+%d' % (w, h, x, y))
-#         self.resizable(False, False)
-#         self.grab_set()
-#         self.focus_set()
-#
-#
-# if __name__ == '__main__':
-#     root = tk.Tk()
-#     root.title("GUI")
-#     w = 700
-#     h = 450
-#     sw = root.winfo_screenwidth()
-#     sh = root.winfo_screenheight()
-#     x = (sw - w) / 2
-#     y = (sh - h) / 2
-#     root.geometry('%dx%d+%d+%d' % (w, h, x, y))
-#     root.resizable(False, False)
-#     app = Display(root)
-#     app.pack()
-#     root.mainloop()
 from tkinter import *
 from tkinter import messagebox
+from tkinter import scrolledtext
 
 
 def clear():
@@ -64,9 +8,62 @@ def clear():
     num_entry.delete(0, END)
 
 
+def retFalse():
+    handle = open("result.txt", "r")
+    _str = handle.read().replace(";", " ").replace("\n", " ")
+    handle.close()
+    lst = []
+    lst = _str.split(" ")
+    _cf = 0;
+    for r in lst:
+        if r == "false":
+            _cf = _cf + 1
+    return _cf
+
+
+def retTrue():
+    handle = open("result.txt", "r")
+    _str = handle.read().replace(";", " ").replace("\n", " ")
+    handle.close()
+    lst = []
+    lst = _str.split(" ")
+    _ct = 0;
+    for r in lst:
+        if r == "true":
+            _ct = _ct + 1
+    return _ct
+
+
+def GetMark(_ct, _cf):
+    if _ct < _cf:
+        return "\nОтрицательных коментариев больше чем положительных "
+    if _cf < _ct:
+        return "\nОтрицательных коментариев меньше чем положительных "
+    if _cf == _ct:
+        return "\nОтрицательных и положительных коментариев поровну "
+
+
 # Для теста
 def display():
-    messagebox.showinfo("Result", "Ваш хештег: " + hashtag_entry.get() + "\nКолличество сообщений: " + num_entry.get())
+    window = Tk()
+    window.title("Result")
+    w = 300
+    h = 600
+    sw = window.winfo_screenwidth()
+    sh = window.winfo_screenheight()
+    x = (sw - w) / 2
+    y = (sh - h) / 2
+    window.geometry('%dx%d+%d+%d' % (w, h-65, x, y))
+    window.resizable(False, False)
+    _ct = retTrue()
+    _cf = retFalse()
+    handle = open("result.txt", "r")
+    _maintxt = handle.read().replace(";", " ")
+    _res = _maintxt + "\n\nКол-во положительных отзывов = " + _ct.__str__() + "\nКол-во отрицательных отзывов = " + _cf.__str__()
+    txt = scrolledtext.ScrolledText(window, width=40, height=35)
+    txt.grid(column=0, row=0)
+    txt.insert(INSERT, _res)
+    window.mainloop()
 
 
 def save():

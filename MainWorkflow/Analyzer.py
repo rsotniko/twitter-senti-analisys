@@ -1,6 +1,3 @@
-import NNLoader
-import TDataLoader
-
 
 class Analyzer(object):
 
