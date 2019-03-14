@@ -56,7 +56,7 @@ def display():
     sh = window.winfo_screenheight()
     x = (sw - w) / 2
     y = (sh - h) / 2
-    window.geometry('%dx%d+%d+%d' % (w, h-65, x, y))
+    window.geometry('%dx%d+%d+%d' % (w, h-30, x, y))
     window.resizable(False, False)
     _ct = retTrue()
     _cf = retFalse()
@@ -66,7 +66,9 @@ def display():
     txt = scrolledtext.ScrolledText(window, width=40, height=35)
     txt.grid(column=0, row=0)
     txt.insert(INSERT, _res)
-    save_button = Button(text="Save", command=save, state=ACTIVE)
+    save_button = Button(window, text="Save", command=save)
+    # save_button.grid(row=2, column=2, padx=5, pady=5, sticky="e")
+    save_button.grid(row=1, column=0, padx=5, pady=5, sticky="e")
     window.mainloop()
 
 
@@ -89,7 +91,7 @@ sw = root.winfo_screenwidth()
 sh = root.winfo_screenheight()
 x = (sw - w) / 2
 y = (sh - h) / 2
-root.geometry('%dx%d+%d+%d' % (w, h, x, y))
+root.geometry('%dx%d+%d+%d' % (w-70, h, x, y))
 root.resizable(False, False)
 
 hashtag_label = Label(text="#")
@@ -108,12 +110,11 @@ num_entry.grid(row=1, column=1, padx=5, pady=5)
 hashtag_entry.insert(0, "RNN")
 num_entry.insert(0, "10000")
 
-save_button = Button(text="Save", command=save, state=DISABLED)
+
 run_button = Button(text="Run", command=display)
 clear_button = Button(text="Clear", command=clear)
 
-run_button.grid(row=2, column=0, padx=5, pady=5, sticky="e")
-clear_button.grid(row=2, column=1, padx=5, pady=5, sticky="e")
-save_button.grid(row=2, column=2, padx=5, pady=5, sticky="e")
+run_button.grid(row=2, column=1, padx=5, pady=5, sticky="e")
+clear_button.grid(row=2, column=0, padx=5, pady=5, sticky="e")
 
 root.mainloop()
