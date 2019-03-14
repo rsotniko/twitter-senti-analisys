@@ -44,6 +44,9 @@ def GetMark(_ct, _cf):
 
 
 def display():
+    # Тут будет вызов функции для анализа файла
+    # Отпарсим результат в нужный нам формат
+    # Записываем в файл result txt - результат, отображаем
     messagebox.showinfo("INFO", "Data is loading, please wait")
     window = Tk()
     window.title("Result")
@@ -63,6 +66,7 @@ def display():
     txt = scrolledtext.ScrolledText(window, width=40, height=35)
     txt.grid(column=0, row=0)
     txt.insert(INSERT, _res)
+    save_button = Button(text="Save", command=save, state=ACTIVE)
     window.mainloop()
 
 
@@ -104,7 +108,7 @@ num_entry.grid(row=1, column=1, padx=5, pady=5)
 hashtag_entry.insert(0, "RNN")
 num_entry.insert(0, "10000")
 
-save_button = Button(text="Save", command=save)
+save_button = Button(text="Save", command=save, state=DISABLED)
 run_button = Button(text="Run", command=display)
 clear_button = Button(text="Clear", command=clear)
 
