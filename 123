@@ -1,6 +1,4 @@
-User_1;#theme1;sampleText_1;
-User_2;#theme1;sampleText_2;
-User_2;#theme1;sampleText_3 mMm Sss UuU WWW;
-sampleText;notAll;
-sampleText;notAll
-qwerty
+Name, text, data
+Ford,"ac, abs, moon", 01
+Chevy,"Venture Extended Edition", 02
+Jeep,"MUST SELL! air, moon roof, loaded", 03

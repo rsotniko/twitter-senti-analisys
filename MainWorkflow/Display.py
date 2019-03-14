@@ -44,6 +44,7 @@ def GetMark(_ct, _cf):
 
 
 def display():
+    messagebox.showinfo("INFO", "Data is loading, please wait")
     window = Tk()
     window.title("Result")
     w = 300

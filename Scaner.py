@@ -4,8 +4,10 @@ Before running install pymorphy2 in console using pip
 Valid string format: UserName;theme;sampleText;
 '''
 
+import word2vec
 import re
 import pymorphy2
+import numpy as np
 
 morph = pymorphy2.MorphAnalyzer()
 
@@ -78,12 +80,17 @@ class List:
 
 # This code just represent the work of class above
 _list = Data.ParseFullFile('123')
-i = 0
-while i < len(_list):
-    a = i + 1
-    print("User number " + a.__str__() + "\n_____________________________\n")
-    print("User name: " + _list[i].user)
-    print("Theme: " + _list[i].theme)
-    List.list_print(_list[i].mainTxt)
-    print("_____________________________\n")
-    i += 1
+Data = pd.read_csv('123')
+#i = 0
+# while i < len(_list):
+#     a = i + 1
+#     print("User number " + a.__str__() + "\n_____________________________\n")
+#     print("User name: " + _list[i].user)
+#     print("Theme: " + _list[i].theme)
+#     List.list_print(_list[i].mainTxt)
+#     print("_____________________________\n")
+#     i += 1
+Data['list_w'] = Data['text'].apply(lambda x: x.split(','))
+Data = word2vec.Word2Vec.WORD2VEC(Data['list_w'])
+# for i in Data:
+#     print(i)
