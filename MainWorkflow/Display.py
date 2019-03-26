@@ -14,7 +14,7 @@ def retFalse():
     handle.close()
     lst = []
     lst = _str.split(" ")
-    _cf = 0;
+    _cf = 0
     for r in lst:
         if r == "false":
             _cf = _cf + 1
@@ -27,7 +27,7 @@ def retTrue():
     handle.close()
     lst = []
     lst = _str.split(" ")
-    _ct = 0;
+    _ct = 0
     for r in lst:
         if r == "true":
             _ct = _ct + 1
