@@ -40,13 +40,10 @@ public class Controller {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("result.fxml"));
-                /*
-                 * if "fx:controller" is not set in fxml
-                 * fxmlLoader.setController(NewWindowController);
-                 */
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                 Stage stage = new Stage();
-                stage.setTitle("New Window");
+                stage.setTitle("Result");
+                stage.resizableProperty().setValue(false);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {

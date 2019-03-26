@@ -1,0 +1,3 @@
+message 1; true;
+message 2; false;
+message 3; false;
