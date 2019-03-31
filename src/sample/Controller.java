@@ -1,19 +1,18 @@
 package sample;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Controller {
+
 
     @FXML
     private ResourceBundle resources;
@@ -37,7 +36,12 @@ public class Controller {
         assert run_button != null : "fx:id=\"run_button\" was not injected: check your FXML file 'sample.fxml'.";
 
         run_button.setOnAction(event -> {
+
             try {
+                String hastag = hashtag_txt.getText(); //Поле с хегтегом
+                int num = Integer.parseInt(num_txt.getText()); //Поле с кол-вом сообщений
+
+                // Загрузка дополнительного окна, для вывода результата
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("result.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -45,11 +49,28 @@ public class Controller {
                 stage.setTitle("Result");
                 stage.resizableProperty().setValue(false);
                 stage.setScene(scene);
+
+
+
                 stage.show();
-            } catch (IOException e) {
-                Logger logger = Logger.getLogger(getClass().getName());
-                logger.log(Level.SEVERE, "Failed to create new Window.", e);
+
+            } catch (Exception e) {
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid input");
+                alert.setContentText("Check your input and try again");
+
+                alert.showAndWait();
+
             }
         });
     }
+
+    @FXML
+    void Run(String hashtag, int num) {
+        //todo Заупск анализа программы
+    }
+
 }
+

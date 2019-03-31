@@ -1,0 +1,113 @@
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+message 1
+Analyze result:  true
+
+message 2
+Analyze result:  false
+
+message 3
+Analyze result:  false
+
+==========================
+
+Result:
+true: 24
+false: 24

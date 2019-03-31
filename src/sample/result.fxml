@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Result"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Result">
+   <children>
+      <AnchorPane prefHeight="87.0" prefWidth="600.0" style="-fx-background-color: #2E3348;" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="WHITE" layoutX="266.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result" AnchorPane.topAnchor="27.50439453125">
+               <font>
+                  <Font name="Lao MN" size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="resTxt" layoutX="1.0" layoutY="86.0" prefHeight="257.0" prefWidth="600.0" />
+      <Button fx:id="save_button" layoutX="199.0" layoutY="359.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="Save" />
+   </children>
 </AnchorPane>
